@@ -1,7 +1,9 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using System;
@@ -15,6 +17,7 @@ namespace Login_Register
     public class RegisterA : Activity
     {
         ImageView imageView1, imageView2;
+        TextView textView;
         Button button1;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,9 +31,26 @@ namespace Login_Register
         }
         private void UIReferences()
         {
+            textView = FindViewById<TextView>(Resource.Id.txtRegister);
             imageView1 = FindViewById<ImageView>(Resource.Id.facebook1);
             imageView2 = FindViewById<ImageView>(Resource.Id.google1);
             button1 = FindViewById<Button>(Resource.Id.registerb);
+
+
+            TextPaint paint = textView.Paint;
+            float width = paint.MeasureText(textView.Text);
+            int[] vs = new int[]
+            {
+                Color.ParseColor("#301934"),
+                Color.ParseColor("#00008B"),
+                Color.ParseColor("#00008B"),
+                Color.ParseColor("#209FF1"),
+                Color.ParseColor("#209FF1"),
+            };
+
+            Shader textshade = new LinearGradient(0, 0, width, textView.TextSize, vs, null, Shader.TileMode.Clamp);
+            textView.Paint.SetShader(textshade);
+
         }
 
         private void UIClickEvents()
