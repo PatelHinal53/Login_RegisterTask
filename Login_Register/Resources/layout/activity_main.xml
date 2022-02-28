@@ -38,7 +38,7 @@
                 android:id="@+id/txtcreate"
                 android:text="Create your account"
                 android:layout_marginLeft="5dp"
-                android:textColor="#F44336"/>
+                android:textColor="#f66786"/>
         </LinearLayout>
     </LinearLayout>
 
