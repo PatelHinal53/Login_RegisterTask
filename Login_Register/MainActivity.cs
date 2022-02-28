@@ -30,7 +30,7 @@ namespace Login_Register
 
         private void UIReferences()
         {
-            textView3 = FindViewById<TextView>(Resource.Id.txtRegister);
+            textView3 = FindViewById<TextView>(Resource.Id.txtlogin);
             textView = FindViewById<TextView>(Resource.Id.txtcreate);
             textView2 = FindViewById<TextView>(Resource.Id.forgotpass);
             button1 = FindViewById<Button>(Resource.Id.loginButton);
@@ -38,6 +38,18 @@ namespace Login_Register
             imageView1 = FindViewById<ImageView>(Resource.Id.facebook);
             imageView2 = FindViewById<ImageView>(Resource.Id.google);
 
+            TextPaint paint = textView3.Paint;
+            float width = paint.MeasureText(textView3.Text);
+            int[] vs = new int[]
+            {
+                Color.ParseColor("#4A148C"),
+                Color.ParseColor("#4A148C"),
+                Color.ParseColor("#00008B"),
+                Color.ParseColor("#209FF1"),
+                Color.ParseColor("#209FF1"),
+            };
+            Shader textshade = new LinearGradient(0, 0, width, textView3.TextSize, vs, null, Shader.TileMode.Clamp);
+            textView3.Paint.SetShader(textshade);
         }
 
         private void UIClick()
