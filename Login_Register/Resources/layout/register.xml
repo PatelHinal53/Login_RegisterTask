@@ -5,147 +5,139 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bgimg">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="40dp">
+    android:background="@drawable/bgimg"
+    >
+        
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegister"
-            android:text="Register"
-            android:textSize="35dp"
-            android:textStyle="bold"/>
+            android:id="@+id/textViewRegister"
+            android:text="@string/register"
+            android:textSize="@dimen/textSize_35"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:layout_marginLeft="@dimen/dimen_40"
+            android:layout_marginTop="@dimen/dimen_60"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="3dp">
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginLeft="@dimen/dimen_40">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtView"
-                    android:text="Don't have an account?"
+                    android:id="@+id/textViewDon"
+                    android:text="@string/donotAccount"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtView1"
-                    android:text="Create your account"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="#f66786"/>
+                    android:id="@+id/textViewCre"
+                    android:text="@string/creAccount"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:textColor="@color/red"/>
             </LinearLayout>
-        </LinearLayout>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp">
+        
+    
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/loguser"
-            android:hint="  Enter Name of User"
+            android:id="@+id/editTextRegName"
+            android:hint="@string/nameOfUser"
             android:drawableLeft="@drawable/ic_person"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:background="@drawable/shape2"
-            android:drawablePadding="15dp"
-            android:padding="15dp"/>
+            android:drawablePadding="@dimen/dimen15"
+            android:padding="@dimen/dimen15"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:layout_marginHorizontal="@dimen/dimen_40"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:id="@+id/emailtxt"
-            android:hint="  Enter Email Address"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:id="@+id/editTextEmail"
+            android:hint="@string/emailAddress"
             android:drawableLeft="@drawable/ic_email_2"
             android:imeOptions="actionNext"
             android:inputType="textWebEmailAddress"
             android:background="@drawable/shape2"
-            android:drawablePadding="15dp"
-            android:padding="15dp"/>
+            android:drawablePadding="@dimen/dimen15"
+            android:padding="@dimen/dimen15"
+            android:layout_marginHorizontal="@dimen/dimen_40"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:id="@+id/username"
-            android:hint="  Enter Username"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:id="@+id/editTextUsername"
+            android:hint="@string/usreName"
             android:drawableLeft="@drawable/ic_person"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:background="@drawable/shape2"
-            android:drawablePadding="15dp"
-            android:padding="15dp"/>
+            android:drawablePadding="@dimen/dimen15"
+            android:padding="@dimen/dimen15"
+            android:layout_marginHorizontal="@dimen/dimen_40"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:id="@+id/passwordUser"
-                android:hint="  Enter Password"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:id="@+id/editTextPassword"
+                android:hint="@string/password"
                 android:drawableLeft="@drawable/ic_key"
-                android:drawablePadding="15dp"
+                android:drawablePadding="@dimen/dimen15"
                 android:inputType="textPassword"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:background="@drawable/shape2"
                 android:fontFamily="sans-serif"
-                android:padding="15dp"/>
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:padding="30dp">
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="203.0dp"
-                    android:layout_height="55dp"
-                    android:id="@+id/registerb"
-                    android:text="Register"
-                    app:cornerRadius="50dp"
-                    android:backgroundTint="#1d58ee"
-                    android:textAllCaps="false"
-                    android:textSize="20dp"
-            />
-        </LinearLayout>
+                android:padding="@dimen/dimen15"
+                android:layout_marginHorizontal="@dimen/dimen_40"/>
+    
         
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="@dimen/dimen_200"
+                    android:layout_height="@dimen/dimen_50"
+                    android:id="@+id/buttonRegisterB"
+                    android:text="@string/registerButton"
+                    app:cornerRadius="@dimen/dimen_50"
+                    android:backgroundTint="@color/blue"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/textSize_20"
+                    android:layout_marginTop="@dimen/dimen_40"
+                    android:layout_gravity="center"
+                />
+        
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Or Register with"
+                android:text="@string/orRegisterWith"
                 android:layout_gravity="center"
-                android:id="@+id/orlogin"
-                android:textSize="17dp"/>
+                android:id="@+id/textViewOrReg"
+                android:textSize="@dimen/textSize_17"
+                android:layout_marginTop="@dimen/dimen_30"/>
+
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="@dimen/dimen_20">
             
                 <ImageView
-                    android:layout_width="65.0dp"
-                    android:layout_height="55.5dp"
+                    android:layout_width="@dimen/dimen_65"
+                    android:layout_height="@dimen/dimen_55"
                     android:src="@drawable/facebook"
-                    android:id="@+id/facebook1"/>
+                    android:id="@+id/imageViewFacebook1"/>
                 <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="59.5dp"
-                    android:layout_height="57.0dp"
-                    android:id="@+id/google1"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_width="@dimen/dimen_59"
+                    android:layout_height="@dimen/dimen_57"
+                    android:id="@+id/imageViewGoogle1"
                     android:src="@drawable/google"/>
         </LinearLayout>
-    </LinearLayout>
+    
 </LinearLayout>
