@@ -32,7 +32,7 @@ namespace Login_Register
 
         async Task SimulateStartup()
         {
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(3));
             //StartActivity(new Intent(Application.Context, typeof(MainActivity)));
             Intent intent = new Intent(Application.Context, typeof(MainActivity));
             StartActivity(intent);
