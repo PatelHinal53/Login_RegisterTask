@@ -5,7 +5,6 @@
     <color name="colorAccent">#3498db</color>
 	<color name="splash_background">#000000</color>
 
-	<color name="purple">#741AAC</color>
-	<color name="han_purple">#5218fa</color>
-	<color name="darkviolet">#9400d3</color>
+	<color name="red">#f66786</color>
+	<color name="blue">#1d58ee</color>
 </resources>
