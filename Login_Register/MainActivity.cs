@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
@@ -7,6 +7,7 @@ using Android.Text;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Login_Register
 {
@@ -14,10 +15,11 @@ namespace Login_Register
 
     public class MainActivity : AppCompatActivity
     {
-        TextView textView, textView2,textView3;
-        Button button1, button2;
-        ImageView imageView1, imageView2;
-
+        TextView textViewCreate, textViewForgotPass, textViewLogin;
+        Button buttonLogin, buttonRegister;
+        ImageView imageViewFacebook, imageViewGoogle;
+        EditText editTextUserLogin, editTextUserPass;
+        Regex UserRegex = new Regex("^[a-z-A-Z- .]*$");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,57 +28,36 @@ namespace Login_Register
             SetContentView(Resource.Layout.activity_main);
             UIReferences();
             UIClick();
+            MultiColor();
         }
 
+        
         private void UIReferences()
         {
-            textView3 = FindViewById<TextView>(Resource.Id.txtlogin);
-            textView = FindViewById<TextView>(Resource.Id.txtcreate);
-            textView2 = FindViewById<TextView>(Resource.Id.forgotpass);
-            button1 = FindViewById<Button>(Resource.Id.loginButton);
-            button2 = FindViewById<Button>(Resource.Id.registerButton);
-            imageView1 = FindViewById<ImageView>(Resource.Id.facebook);
-            imageView2 = FindViewById<ImageView>(Resource.Id.google);
+            textViewLogin = FindViewById<TextView>(Resource.Id.textViewLogin);
+            textViewCreate = FindViewById<TextView>(Resource.Id.textViewCreate);
+            textViewForgotPass = FindViewById<TextView>(Resource.Id.textViewForgotPass);
+            buttonLogin = FindViewById<Button>(Resource.Id.buttonLogin);
+            buttonRegister = FindViewById<Button>(Resource.Id.buttonRegister);
+            imageViewFacebook = FindViewById<ImageView>(Resource.Id.imageViewFacebook);
+            imageViewGoogle = FindViewById<ImageView>(Resource.Id.imageViewGoogle);
 
-            TextPaint paint = textView3.Paint;
-            float width = paint.MeasureText(textView3.Text);
-            int[] vs = new int[]
-            {
-                Color.ParseColor("#4A148C"),
-                Color.ParseColor("#4A148C"),
-                Color.ParseColor("#00008B"),
-                Color.ParseColor("#209FF1"),
-                Color.ParseColor("#209FF1"),
-            };
-            Shader textshade = new LinearGradient(0, 0, width, textView3.TextSize, vs, null, Shader.TileMode.Clamp);
-            textView3.Paint.SetShader(textshade);
+            editTextUserLogin = FindViewById<EditText>(Resource.Id.editTextUserLogin);
+            editTextUserPass = FindViewById<EditText>(Resource.Id.editTextUserPass);
+
+            
         }
 
         private void UIClick()
         {
-            textView.Click += RegisterA_Click;
-            textView2.Click += Forgot_Click;
+            textViewCreate.Click += RegisterA_Click;
+            textViewForgotPass.Click += Forgot_Click;
 
-            button1.Click += Login_Click;
-            button2.Click += RegisterA_Click;
-            imageView1.Click += facebook_Click;
-            imageView2.Click += google_Click;
+            buttonLogin.Click += Login_Click;
+            buttonRegister.Click += RegisterA_Click;
+            imageViewFacebook.Click += facebook_Click;
+            imageViewGoogle.Click += google_Click;
         }
-        private void Login_Click(object sender, EventArgs e)
-        {
-            Toast.MakeText(this, "Login Successfully", ToastLength.Short).Show();
-        }
-        private void google_Click(object sender, EventArgs e)
-        {
-            Toast.MakeText(this, "Login With Google.?", ToastLength.Short).Show();
-        }
-
-        private void facebook_Click(object sender, EventArgs e)
-        {
-            Toast.MakeText(this, "Login With Facebook.?", ToastLength.Short).Show();
-        }
-
-        
 
         private void RegisterA_Click(object sender, EventArgs e)
         {
@@ -89,19 +70,69 @@ namespace Login_Register
             Intent a = new Intent(this, typeof(ForgotpassA));
             StartActivity(a);
         }
-
-        private void Register_Click(object sender, EventArgs e)
+        private void Login_Click(object sender, EventArgs e)
         {
-            Intent i = new Intent(this, typeof(RegisterA));
-            StartActivity(i);
+            if(editTextUserLogin.Text == "" && editTextUserPass.Text == "")
+            {
 
+                editTextUserLogin.Error = "Please Enter Details";
+                editTextUserPass.Error = "Please Enter Details";
+
+            }
+            else if (editTextUserLogin.Text == "")
+            {
+                editTextUserLogin.Error = "Enter Username";
+            }
+            else if (!ValidateUser(editTextUserLogin.Text))
+            {
+                editTextUserLogin.Error = "Please Enter the Valid Username";
+            }
+            else if (editTextUserPass.Text == "")
+            {
+                editTextUserPass.Error = "Entert Password";
+            }
+            else if (editTextUserPass.Text.Length < 8)
+            {
+                editTextUserPass.Error = "Password length is 8";
+            }
+            else
+            {
+                Toast.MakeText(this, "Login Successfully", ToastLength.Short).Show();
+            }
+
+            bool ValidateUser(string user)
+            {
+                if (string.IsNullOrWhiteSpace(user))
+                    return false;
+
+                return UserRegex.IsMatch(user);
+            }
+        }
+        private void google_Click(object sender, EventArgs e)
+        {
+            Toast.MakeText(this, "Login With Google.", ToastLength.Short).Show();
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        private void facebook_Click(object sender, EventArgs e)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Toast.MakeText(this, "Login With Facebook.", ToastLength.Short).Show();
         }
+        private void MultiColor()
+        {
+            TextPaint paint = textViewLogin.Paint;
+            float width = paint.MeasureText(textViewLogin.Text);
+            int[] vs = new int[]
+            {
+                Color.ParseColor("#4A148C"),
+                Color.ParseColor("#4A148C"),
+                Color.ParseColor("#00008B"),
+                Color.ParseColor("#3c70d9"),
+                Color.ParseColor("#3c70d9"),
+            };
+            Shader textshade = new LinearGradient(0, 0, width, textViewLogin.TextSize, vs, null, Shader.TileMode.Clamp);
+            textViewLogin.Paint.SetShader(textshade);
+        }
+
+
     }
 }
